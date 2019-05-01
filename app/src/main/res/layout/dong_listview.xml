@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtngaythang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ngày tháng"
+            android:textColor="#F5F5F5"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/txtstatuss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái"
+            android:textColor="#F5F5F5"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+            <ImageView
+                android:src="@drawable/cloud"
+                android:id="@+id/imgtrangthai"
+                android:layout_weight="1"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+            <TextView
+                android:textColor="#F5F5F5"
+                android:id="@+id/txtmax"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:text="Max temp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#F5F5F5"
+                android:id="@+id/txtmin"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:text="Min temp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

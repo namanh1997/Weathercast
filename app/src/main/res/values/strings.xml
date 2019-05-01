@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Weathercast</string>
+    <string name="map_api_key">AIzaSyBBW6suOHzwNH597_WnRzT2XYi11nh2zXA</string>
+</resources>
