@@ -1,0 +1,4 @@
+#Wed May 01 15:36:21 ICT 2019
+base.0=F\:\\2018-2019 nam 4\\Ky 2\\Phat trien phan mem huong dich vu\\Weathercast\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
