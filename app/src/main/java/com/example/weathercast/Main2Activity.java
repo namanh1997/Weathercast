@@ -29,7 +29,7 @@ public class Main2Activity extends AppCompatActivity {
     ImageView imgback;
     TextView txtname;
     ListView lv;
-    CustomAdapter  customAdapter;
+    CustomAdapter customAdapter;
     ArrayList<Thoitiet> mangthoitiet;
 
 
@@ -39,32 +39,32 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         Intent intent = getIntent();
         String city = intent.getStringExtra("name");
-        Log.d("ket qua","Du lieu truyen qua"+city);
+        Log.d("ket qua", "Du lieu truyen qua" + city);
         Get7DaysData(city);
         Anhxa();
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               onBackPressed();
+                onBackPressed();
             }
         });
     }
 
     private void Anhxa() {
-         imgback = (ImageView) findViewById(R.id.imgback);
-         txtname = (TextView) findViewById(R.id.txttenthanhpho);
-         lv = (ListView) findViewById(R.id.listview);
-         mangthoitiet = new ArrayList<Thoitiet>();
-         customAdapter = new CustomAdapter(Main2Activity.this,mangthoitiet);
-         lv.setAdapter(customAdapter);
+        imgback = (ImageView) findViewById(R.id.imgback);
+        txtname = (TextView) findViewById(R.id.txttenthanhpho);
+        lv = (ListView) findViewById(R.id.listview);
+        mangthoitiet = new ArrayList<Thoitiet>();
+        customAdapter = new CustomAdapter(Main2Activity.this, mangthoitiet);
+        lv.setAdapter(customAdapter);
 
 
     }
 
     private void Get7DaysData(String data) {
-        String url = "http://api.openweathermap.org/data/2.5/forecast?q="+data+"&units=metric&cnt=7&appid=27a77fcad68bf8df89e0124c586f0d30";
+        String url = "http://api.openweathermap.org/data/2.5/forecast?q=" + data + "&units=metric&cnt=7&appid=27a77fcad68bf8df89e0124c586f0d30";
         RequestQueue requestQueue = Volley.newRequestQueue(Main2Activity.this);
-        StringRequest  stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -78,12 +78,12 @@ public class Main2Activity extends AppCompatActivity {
 
                             JSONArray jsonArrayList = jsonObject.getJSONArray("list");
 
-                            for(int i =0;i<jsonArrayList.length();i++){
+                            for (int i = 0; i < jsonArrayList.length(); i++) {
                                 JSONObject jsonObjectList = jsonArrayList.getJSONObject(i);
                                 String ngay = jsonObjectList.getString("dt");
 
                                 long l = Long.valueOf(ngay); // doc du lieu ngay thang
-                                Date date = new Date(l*1000L);
+                                Date date = new Date(l * 1000L);
                                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE yyyy-MM-dd  HH-mm-ss");// dinh dang kieu ngay thang
                                 String Day = simpleDateFormat.format(date); //doc lai du lieu sau khi dinh dang
 
@@ -101,7 +101,7 @@ public class Main2Activity extends AppCompatActivity {
                                 String status = jsonObjectWeather.getString("description");
                                 String icon = jsonObjectWeather.getString("icon");
 
-                                mangthoitiet.add(new Thoitiet(Day,status,icon,Nhietdomax,Nhietdomin));
+                                mangthoitiet.add(new Thoitiet(Day, status, icon, Nhietdomax, Nhietdomin));
 
 
                             }

@@ -23,6 +23,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class MapActivity extends AppCompatActivity {
     LatLng center;
     Button btnChon;
     String location;
-    MarkerOptions marker;
+    Marker marker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +60,15 @@ public class MapActivity extends AppCompatActivity {
                             map.clear();
                         }
                         location = getAddressFromLocation(point.latitude, point.longitude);
-                        marker = new MarkerOptions()
+                        marker = map.addMarker(new MarkerOptions()
                                 .position(new LatLng(point.latitude, point.longitude))
-                                .title(location);
-                        map.addMarker(marker);
+                                .title(location));
+                        marker.showInfoWindow();
                     }
                 });
                 map.getUiSettings().setZoomControlsEnabled(true);
                 LatLng latLng = new LatLng(21, 105.75);
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 7));
 //                initCameraIdle();
             }
         });
@@ -75,6 +76,7 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MapActivity.this, MainActivity.class);
+                location = getCity(location);
                 intent.putExtra("name", location);
                 startActivity(intent);
             }
@@ -104,6 +106,13 @@ public class MapActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return address;
+    }
+
+    private String getCity(String address) {
+        String[] list = address.split(",");
+        String city = list[list.length-2].trim();
+        System.out.println(city);
+        return city;
     }
 
 }
